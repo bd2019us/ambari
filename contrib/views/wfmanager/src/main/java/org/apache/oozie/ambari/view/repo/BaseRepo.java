@@ -84,9 +84,9 @@ public class BaseRepo<T> {
   public void update(T obj) {
     try {
       if (obj instanceof When) {
-        Date now = new Date();
+      
         When when = (When) obj;
-        when.setUpdatedAt(String.valueOf(now.getTime()));
+        when.setUpdatedAt(String.valueOf(System.currentTimeMillis());
       }
       this.dataStore.store(obj);
     } catch (PersistenceException e) {
