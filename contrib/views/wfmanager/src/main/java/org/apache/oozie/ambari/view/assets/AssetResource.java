@@ -121,7 +121,8 @@ public class AssetResource {
                                            String postBody, MultivaluedMap<String, String> queryParams) {
     String workflowXml = oozieUtils.generateWorkflowXml(postBody);
     Map<String, String> result = new HashMap<>();
-    String tempWfPath = "/tmp" + "/tmpooziewfs/tempwf_" + Math.round(Math.random() * 100000) + ".xml";
+    Random rand = new Random();
+    String tempWfPath = "/tmp" + "/tmpooziewfs/tempwf_" + Math.round(rand.nextDouble() * 100000) + ".xml";
     try {
       hdfsFileUtils.writeToFile(tempWfPath, workflowXml, true);
     } catch (IOException ex) {
